@@ -18,20 +18,20 @@
 
         </div>
 
-            {% for value in new_data%}
+            
                     <div class="col-lg-4">
                             <div class="card" style="width: 20rem;">
                                 <div class="card-body">
                                   <h4 class="card-title">Mars</h4>
-                                  <h6 class="card-subtitle mb-2 text-muted">{{ value.title }}</h6>
-                                  <p class="card-text">Surf: {{ value.paragraph }}</p>
-                                  <p class="card-text">Surf: {{ value.featured_image_url }}</p>
-                                  <p class="card-text">Surf: {{ value.mars_weather }}</p>
-                                  <p class="card-text">Surf: {{ value.hemisphere_image_urls }}</p>
+                                  <h6 class="card-subtitle mb-2 text-muted">{{ new_data.title }}</h6>
+                                  <p class="card-text">Surf: {{ new_data.paragraph }}</p>
+                                  <p class="card-text">Surf: {{ new_data.featured_image_url }}</p>
+                                  <p class="card-text">Surf: {{ new_data.mars_weather }}</p>
+                                  <p class="card-text">Surf: {{ new_data.hemisphere_image_urls }}</p>
                                 </div>
-                              </div>
-                          </div>
-            {% endfor %}                  
+                            </div>
+                    </div>
+                          
 
     </div>
 
