@@ -18,7 +18,9 @@ import pandas as pd
 
 
 def init_browser():
+    print("first step")
     executable_path = {"executable_path": "chromedriver.exe"}
+    print(executable_path)
     return Browser("chrome", **executable_path, headless=False)
     
 
@@ -37,7 +39,7 @@ def scrape():
 # In[ ]:
 
 
-    html = browser.html
+    
 
 
 # In[ ]:
@@ -51,7 +53,8 @@ def scrape():
 
 
 # Create BeautifulSoup object; parse with 'html.parser'
-    time.sleep(2)
+    time.sleep(3)
+    html = browser.html
     soup = BeautifulSoup(html, 'html.parser')
 
 
@@ -75,7 +78,6 @@ def scrape():
     news_title= slide.find('div', class_='content_title').get_text('a')
     print(f"The title of the most recent article is: {news_title}")
 
-
 # In[ ]:
 
 
@@ -90,6 +92,7 @@ def scrape():
 
     url = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
     browser.visit(url)
+    time.sleep(3)
 
 
 # In[ ]:
@@ -110,6 +113,7 @@ def scrape():
             print(front + featured)
         
     except Exception as e:
+        print("Exception ocrrured")
         print(e)
         
 
@@ -128,6 +132,7 @@ def scrape():
 
     url = 'https://twitter.com/marswxreport?lang=en'
     browser.visit(url)
+    time.sleep(3)
 
 
 # In[ ]:
@@ -152,7 +157,7 @@ def scrape():
 # In[ ]:
 
 
-    print(mars_weather)
+    # print(mars_weather)
 
 
 # # Mars Facts
@@ -197,82 +202,86 @@ def scrape():
 
     url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
     browser.visit(url)
+    time.sleep(3)
 
 
 # In[8]:
 
 
     image_first = 'https://astrogeology.usgs.gov'
-    hemi_name=[]
-    hemi_url=[]
-    for x in range(4):
-        html = browser.html
-        hemi_soup = BeautifulSoup(html, 'html.parser')
-        name1=hemi_soup.find('div', class_='description').find('a').text
-        image=hemi_soup.find('div', class_='description').find('a')['href']
-        
-        print(name1)       
+
+    html = browser.html
+    hemi_soup = BeautifulSoup(html, 'html.parser')
+    name1=hemi_soup.find('div', class_='description').find('a').text
+    # name1='bob'
+    image=hemi_soup.find('div', class_='description').find('a')['href']
     
-        image_get=image_first + image
-        
-        browser.visit(image_get)
-        html = browser.html
-        first_soup = BeautifulSoup(html, 'html.parser')
+    # print(name1)       
+
+    image_get=image_first + image
     
-        final_1 = first_soup.find('div', class_='downloads').find('a')['href']
-        
-        print(final_1)
+    browser.visit(image_get)
+    time.sleep(3)
+    html = browser.html
+    first_soup = BeautifulSoup(html, 'html.parser')
+
+    final_1 = first_soup.find('div', class_='downloads').find('a')['href']
     
-        name2=hemi_soup.find_all('div', class_='description')[1].find('a').text
-        image1=hemi_soup.find_all('div', class_='description')[1].find('a')['href']
-        
-        print(name2)
-        
-        image_get=image_first + image1    
-        
-        browser.visit(image_get)
-        html = browser.html
-        second_soup = BeautifulSoup(html, 'html.parser')
-        
-        final_2 = second_soup.find('div', class_='downloads').find('a')['href']
-        
-        print(final_2)
-        
-        name3=hemi_soup.find_all('div', class_='description')[2].find('a').text
-        image1=hemi_soup.find_all('div', class_='description')[2].find('a')['href']
-        
-        print(name3)
-        
-        image_get=image_first + image1    
-        
-        browser.visit(image_get)
-        html = browser.html
-        third_soup = BeautifulSoup(html, 'html.parser')
-        
-        final_3 = third_soup.find('div', class_='downloads').find('a')['href']
-        
-        print(final_3)
+    print(final_1)
+
+    name2=hemi_soup.find_all('div', class_='description')[1].find('a').text
+    image1=hemi_soup.find_all('div', class_='description')[1].find('a')['href']
     
-        name4=hemi_soup.find_all('div', class_='description')[3].find('a').text
-        image1=hemi_soup.find_all('div', class_='description')[3].find('a')['href']
-        
-        print(name4)
-        
-        image_get=image_first + image1    
-        
-        browser.visit(image_get)
-        html = browser.html
-        fourth_soup = BeautifulSoup(html, 'html.parser')
-        
-        final_4 = third_soup.find('div', class_='downloads').find('a')['href']
-        
-        print(final_4)
-        
-        try:
-            browser.back()
-        
-        except Exception as e:
-            print(e)
+    print(name2)
+    
+    image_get=image_first + image1    
+    
+    browser.visit(image_get)
+    time.sleep(3)
+    html = browser.html
+    second_soup = BeautifulSoup(html, 'html.parser')
+    
+    final_2 = second_soup.find('div', class_='downloads').find('a')['href']
+    
+    print(final_2)
+    
+    name3=hemi_soup.find_all('div', class_='description')[2].find('a').text
+    image1=hemi_soup.find_all('div', class_='description')[2].find('a')['href']
+    
+    print(name3)
+    
+    image_get=image_first + image1    
+    
+    browser.visit(image_get)
+    time.sleep(3)
+    html = browser.html
+    third_soup = BeautifulSoup(html, 'html.parser')
+    
+    final_3 = third_soup.find('div', class_='downloads').find('a')['href']
+    
+    print(final_3)
+
+    name4=hemi_soup.find_all('div', class_='description')[3].find('a').text
+    image1=hemi_soup.find_all('div', class_='description')[3].find('a')['href']
+    
+    print(name4)
+    
+    image_get=image_first + image1    
+    
+    browser.visit(image_get)
+    time.sleep(3)
+    html = browser.html
+    fourth_soup = BeautifulSoup(html, 'html.parser')
+    
+    final_4 = third_soup.find('div', class_='downloads').find('a')['href']
+    
+    print(final_4)
+    
+    try:
+        browser.back()
+    
+    except Exception as e:
+        print(e)
 
 
 # In[27]:
@@ -286,6 +295,8 @@ def scrape():
 
 # In[ ]:
 
-    data={"title":news_title, "paragraph": news_paragraph, "featured image": featured_image_url, "Mars weather": mars_weather, "Hemispere": hemisphere_image_urls}
+    data={"title":news_title, "paragraph": news_paragraph, "featured_image_url": featured_image_url, "mars_weather": mars_weather, "hemisphere_image_urls": hemisphere_image_urls}
 
     return data
+
+# scrape()

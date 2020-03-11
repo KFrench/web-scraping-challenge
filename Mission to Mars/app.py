@@ -11,7 +11,10 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def index():
+    print("Hello World")
     new_data = mongo.db.data.find_one()
+    print("Second Part")
+    print(new_data)
     return render_template("index.html", new_data=new_data)
 
 @app.route("/scrape")
@@ -22,4 +25,4 @@ def scraper():
     return redirect("/", code=302)
 
 if __name__ == "__main__":
-    app.run(debug=True,port=8005)   
+    app.run(debug=True,port=8006)   
