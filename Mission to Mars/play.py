@@ -295,7 +295,7 @@ def scrape():
 
 # In[ ]:
 
-    data={"title":news_title, "paragraph": news_paragraph, "featured_image_url": featured_image_url, "mars_weather": mars_weather, "hemisphere_image_urls": hemisphere_image_urls}
+    data={"title":news_title, "paragraph": news_paragraph, "featured_image_url": featured_image_url, "mars_weather": mars_weather, "hemisphere_1": name1, "hemisphere_1_url": final_1,  "hemisphere_2": name2, "hemisphere_2_url": final_2, "hemisphere_3": name3, "hemisphere_3_url": final_3, "hemisphere_4": name4, "hemisphere_4_url": final_4}
 
     return data
 
